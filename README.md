@@ -1,4 +1,4 @@
-# npm-registry-client
+# anonymous-npm-registry-client
 
 The code that npm uses to talk to the registry.
 

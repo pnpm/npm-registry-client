@@ -75,18 +75,6 @@ test('distTags.rm call contract', function (t) {
     'distTags.rm must include dist-tag'
   )
 
-  t.throws(
-    function () {
-      var params = {
-        'package': PACKAGE,
-        distTag: DIST_TAG
-      }
-      client.distTags.rm(BASE_URL, params, nop)
-    },
-    { name: 'AssertionError', message: 'must pass auth to distTags.rm' },
-    'distTags.rm must include auth'
-  )
-
   t.end()
 })
 
