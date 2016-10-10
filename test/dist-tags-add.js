@@ -95,19 +95,6 @@ test('distTags.add call contract', function (t) {
     'distTags.add must include version'
   )
 
-  t.throws(
-    function () {
-      var params = {
-        'package': PACKAGE,
-        distTag: DIST_TAG,
-        version: VERSION
-      }
-      client.distTags.add(BASE_URL, params, nop)
-    },
-    { name: 'AssertionError', message: 'must pass auth to distTags.add' },
-    'distTags.add must include auth'
-  )
-
   t.end()
 })
 

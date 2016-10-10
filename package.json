@@ -1,10 +1,10 @@
 {
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
-  "name": "npm-registry-client",
+  "name": "anonymous-npm-registry-client",
   "description": "Client for the npm registry",
-  "version": "8.6.0",
+  "version": "0.1.0",
   "repository": {
-    "url": "https://github.com/npm/npm-registry-client.git"
+    "url": "https://github.com/zkochan/anonymous-npm-registry-client.git"
   },
   "main": "index.js",
   "scripts": {
