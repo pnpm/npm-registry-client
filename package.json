@@ -23,14 +23,14 @@
   },
   "devDependencies": {
     "negotiator": "^0.6.1",
-    "nock": "^8.0.0",
+    "nock": "^9.0.2",
     "readable-stream": "^2.1.5",
     "rimraf": "^2.5.4",
     "standard": "^8.0.0",
-    "tap": "^7.0.0"
+    "tap": "^8.0.1"
   },
   "optionalDependencies": {
-    "npmlog": "~2.0.0 || ~3.1.0"
+    "npmlog": "~4.0.1"
   },
   "license": "ISC"
 }
