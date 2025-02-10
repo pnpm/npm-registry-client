@@ -2,7 +2,7 @@
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
   "name": "anonymous-npm-registry-client",
   "description": "Client for the npm registry",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": {
     "url": "https://github.com/zkochan/anonymous-npm-registry-client.git"
   },
@@ -25,6 +25,7 @@
     "index.d.ts"
   ],
   "dependencies": {
+    "@qiwi/npm-types": "^1.0.2",
     "concat-stream": "^2.0.0",
     "graceful-fs": "^4.2.4",
     "normalize-package-data": "~1.0.1 || ^2.0.0 || ^3.0.0",
@@ -38,7 +39,6 @@
     "ssri": "^8.0.0"
   },
   "devDependencies": {
-    "@qiwi/npm-types": "^1.0.2",
     "negotiator": "^0.6.2",
     "nock": "^13.0.5",
     "readable-stream": "^3.6.0",
