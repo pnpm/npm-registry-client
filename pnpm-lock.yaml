@@ -27,8 +27,8 @@ importers:
         specifier: npm:postman-request@2.88.1-postman.40
         version: postman-request@2.88.1-postman.40
       retry:
-        specifier: ^0.12.0
-        version: 0.12.0
+        specifier: ^0.13.1
+        version: 0.13.1
       safe-buffer:
         specifier: ^5.2.1
         version: 5.2.1
@@ -2368,6 +2368,10 @@ packages:
 
   retry@0.12.0:
     resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
+    engines: {node: '>= 4'}
+
+  retry@0.13.1:
+    resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
     engines: {node: '>= 4'}
 
   reusify@1.0.4:
@@ -5655,6 +5659,8 @@ snapshots:
       signal-exit: 3.0.7
 
   retry@0.12.0: {}
+
+  retry@0.13.1: {}
 
   reusify@1.0.4: {}
 
