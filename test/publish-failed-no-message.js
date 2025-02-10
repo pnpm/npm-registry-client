@@ -11,10 +11,10 @@ var URI = 'http://localhost:1337/'
 var USERNAME = 'username'
 var PASSWORD = '%1234@asdf%'
 var EMAIL = 'i@izs.me'
-var METADATA = require('../package.json')
+var METADATA = require('./package-old.json')
 var ACCESS = 'public'
 // not really a tarball, but doesn't matter
-var BODY_PATH = require.resolve('../package.json')
+var BODY_PATH = require.resolve('./package-old.json')
 var BODY = createReadStream(BODY_PATH)
 var AUTH = {
   username: USERNAME,
@@ -30,8 +30,10 @@ var PARAMS = {
 
 test('publish with a 500 response but no message', function (t) {
   server.expect('/npm-registry-client', function (req, res) {
-    res.statusCode = 500
-    res.json({ success: false })
+    req.on('end', function () {
+      res.statusCode = 500
+      res.json({ success: false })
+    })
   })
 
   client.publish(URI, PARAMS, function (er, data) {

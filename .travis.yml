@@ -1,19 +1,59 @@
 language: node_js
-matrix:
-  include:
-    - node_js: "10"
-      before_install:
-        - "npm install -g npm@latest"
-    - node_js: "8"
-      before_install:
-        - "npm install -g npm@latest"
-    - node_js: "6"
-      before_install:
-        - "npm install -g npm@latest"
-    - node_js: "4"
-      before_install:
-        - "npm install -g npm@5"
-script: "npm test"
+cache: npm
+node_js: 14
+install: skip
+dist: focal
 sudo: false
-notifications:
-    slack: npm-inc:kRqQjto7YbINqHPb1X6nS3g8
+
+jobs:
+  fast_finish: true
+  include:
+    - stage: verify
+      if: branch != master AND type != pull_request
+      os: linux
+      install:
+        - npm install
+        - npm install -g npm@latest
+        - npm --version
+      script:
+        - npm run build
+        - if [ $CI_TEST != "false" ]; then
+            npm test;
+          fi
+    - stage: build
+      if: branch = master
+      os: linux
+      install:
+        - npm install
+        - npm install -g npm@latest
+      script:
+        - npm run build
+      # https://docs.travis-ci.com/user/using-workspaces/
+      workspaces:
+        create:
+          name: linux-shared
+          paths:
+            - docs
+            - node_modules
+
+    - &test
+      if: branch = master AND type = pull_request AND env(CI_TEST) != false
+      stage: test
+      os: linux
+      script: npm test
+      workspaces:
+        use: linux-shared
+    #- <<: *test
+    #  node_js: 8
+    #- <<: *test
+    #  node_js: 10
+    - <<: *test
+      node_js: 12
+
+    - stage: release
+      if: branch = master AND type != pull_request AND env(CI_RELEASE) = true
+      workspaces:
+        use: linux-shared
+      install: skip
+      script: npx -p @qiwi/semrel-toolkit semrel -e @qiwi/semrel-config
+      # script: echo 'Deploy step is disabled' && exit 0
